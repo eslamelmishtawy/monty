@@ -45,7 +45,6 @@ char **tokenizer(char *str)
 	if (!str)
 		return (NULL);
 	tmp = _strdup(str);
-	printf("%s", tmp);
 	token = strtok(tmp, " \t\n");
 
 	if (!token)

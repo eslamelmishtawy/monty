@@ -4,13 +4,14 @@
  * @a: pointer to array of strings
  * Return: Nothing
  */
-void free_list(char *a[])
+void free_list(stack_t *head)
 {
-	int i = 0;
+	stack_t *temp;
 
-	while (a[i] != NULL)
+	while (head)
 	{
-		free(a[i]);
-		i++;
+		temp = head->next;
+		free(head);
+		head = temp;
 	}
 }

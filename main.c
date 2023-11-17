@@ -1,5 +1,4 @@
 #include "monty.h"
-#include <string.h>
 
 int data;
 /**
@@ -46,11 +45,12 @@ int main(int argc, char **argv)
 		func(&stack, line_number);
 		line_number++;
 	}
+	free(line);
+	free_list(stack);
+	fclose(fd);
 	return (0);
 
 }
-
-
 
 /**
  * check_opcodes - function to check the operation

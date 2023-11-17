@@ -1,5 +1,6 @@
 #include "monty.h"
 
+int data = 0;
 
 int main(int argc, char **argv)
 {
@@ -36,6 +37,7 @@ int main(int argc, char **argv)
 		parsed_line = tokenizer(line);
 		func = check_opcodes(parsed_line[0]);
 		if (parsed_line[1] != NULL)
+			data = atoi(parsed_line[1]);
 		func(&stack, line_number);
 		line_number++;
 	}
@@ -61,7 +63,7 @@ void (*check_opcodes(char *op))(stack_t **stack, unsigned int line_number)
 
 	while (instruct[i].opcode)
 	{
-		if (strcmp(op, instruct[i].opcode))
+		if (strcmp(op, instruct[i].opcode) == 0)
 		{
 			return (instruct[i].f);
 		}

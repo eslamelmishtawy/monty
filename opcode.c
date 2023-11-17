@@ -19,7 +19,7 @@ void _push(stack_t **stack, unsigned int line_num)
 	s = malloc(sizeof(stack_t));
 	if (!s)
 		exit(EXIT_FAILURE);
-	s->n = 1;
+	s->n = data;
 	s->next = NULL;
 	s->prev = *stack;
 	*stack = s;
@@ -33,7 +33,7 @@ void _pall(stack_t **stack, unsigned line_num)
 {
 	while (*stack)
 	{
-		printf("%d", (*stack)->n);
+		printf("%d\n", (*stack)->n);
 		*stack = (*stack)->prev;
 	}
 }

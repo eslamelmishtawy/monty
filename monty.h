@@ -7,6 +7,7 @@
 #include <string.h>
 #include <sys/syscall.h>
 
+extern int data;
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -37,7 +38,8 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-void _push(stack_t **stack, unsigned int line_num, int n);
-void _pall(stack_t *stack);
-
+void _push(stack_t **stack, unsigned int line_num);
+void _pall(stack_t **stack, unsigned int line_num);
+char **tokenizer(char *str);
+void (*check_opcodes(char *op))(stack_t **stack, unsigned int line_number);
 #endif

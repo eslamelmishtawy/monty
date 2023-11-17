@@ -6,7 +6,7 @@
  * @line_num: file's line number
  * @n: variable
  */
-void _push(stack_t **stack, unsigned int line_num, int n)
+void _push(stack_t **stack, unsigned int line_num)
 {
 	if (!stack)
 	{
@@ -19,9 +19,9 @@ void _push(stack_t **stack, unsigned int line_num, int n)
 	s = malloc(sizeof(stack_t));
 	if (!s)
 		exit(EXIT_FAILURE);
-	s->n = n;
+	s->n = 1;
 	s->next = NULL;
-	s-prev = *stack;
+	s->prev = *stack;
 	*stack = s;
 }
 
@@ -29,11 +29,11 @@ void _push(stack_t **stack, unsigned int line_num, int n)
  * _pall - Print stack
  * @stack: pointer to head of stack
  */
-void _pall(stack_t *stack)
+void _pall(stack_t **stack, unsigned line_num)
 {
-	while (stack)
+	while (*stack)
 	{
-		printf("%d", stack->n);
-		stack = stack->prev;
+		printf("%d", (*stack)->n);
+		*stack = (*stack)->prev;
 	}
 }

@@ -1,20 +1,19 @@
 #include "monty.h"
 
 /**
- * push - Pushes an element to the stack
+ * _push - Pushes an element to the stack
  * @stack: pointer to head of stack
  * @line_num: file's line number
- * @n: variable
  */
 void _push(stack_t **stack, unsigned int line_num)
 {
+	stack_t *s = *stack;
+
 	if (!stack)
 	{
 		fprintf(stderr, "L%d: usage: push integer", line_num);
 		exit(EXIT_FAILURE);
 	}
-	stack_t *s = *stack;
-	stack_t *temp = *stack;
 
 	s = malloc(sizeof(stack_t));
 	if (!s)
@@ -28,9 +27,11 @@ void _push(stack_t **stack, unsigned int line_num)
 /**
  * _pall - Print stack
  * @stack: pointer to head of stack
+ * @line_num: line num
  */
-void _pall(stack_t **stack, unsigned line_num)
+void _pall(stack_t **stack, unsigned int line_num)
 {
+	(void) line_num;
 	while (*stack)
 	{
 		printf("%d\n", (*stack)->n);

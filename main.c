@@ -1,7 +1,13 @@
 #include "monty.h"
+#include <string.h>
 
-int data = 0;
-
+int data;
+/**
+ * main - function to check the operation
+ * @argc: argc
+ * @argv: argv
+ * Return: 0
+ */
 int main(int argc, char **argv)
 {
 	stack_t *stack = NULL;
@@ -11,7 +17,7 @@ int main(int argc, char **argv)
 	unsigned int line_number = 1;
 	void (*func)(stack_t **stack, unsigned int line_num);
 
-	if(argc != 2)
+	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
@@ -24,15 +30,14 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 
-	line = malloc(sizeof(char)* buff_size);
+	line = malloc(sizeof(char) * buff_size);
 	if (!line)
 	{
 		fprintf(stderr, "Error: malloc failed");
 		exit(EXIT_FAILURE);
 	}
 
-
-	while(getline(&line, &buff_size, fd) != -1)
+	while (getline(&line, &buff_size, fd) != -1)
 	{
 		parsed_line = tokenizer(line);
 		func = check_opcodes(parsed_line[0]);
@@ -48,8 +53,9 @@ int main(int argc, char **argv)
 
 
 /**
- * check_op - function to check the operation
+ * check_opcodes - function to check the operation
  * @op: parsed_line
+ * Return: pointer to function
  */
 
 void (*check_opcodes(char *op))(stack_t **stack, unsigned int line_number)

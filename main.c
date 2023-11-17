@@ -45,7 +45,6 @@ int main(int argc, char **argv)
 		func(&stack, line_number);
 		line_number++;
 	}
-	fclose(fd);
 	return (0);
 
 }

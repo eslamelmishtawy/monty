@@ -22,7 +22,6 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 	fd = fopen(argv[1], "r");
-
 	if (!fd)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
@@ -39,6 +38,11 @@ int main(int argc, char **argv)
 	while (getline(&line, &buff_size, fd) != -1)
 	{
 		parsed_line = tokenizer(line);
+		if (parsed_line[2] != NULL)
+		{
+			fprintf(stderr, "L%d: usage: push integer\n", line_number);
+                	exit(EXIT_FAILURE);
+		}
 		func = check_opcodes(parsed_line[0]);
 		if (parsed_line[1] != NULL)
 			data = atoi(parsed_line[1]);
@@ -49,7 +53,6 @@ int main(int argc, char **argv)
 	free_stack(stack);
 	fclose(fd);
 	return (0);
-
 }
 
 /**

@@ -15,7 +15,6 @@ char *_strdup(char *str)
 
 	if (str == NULL)
 	{
-		free(str);
 		return (NULL);
 	}
 
@@ -47,10 +46,9 @@ char **tokenizer(char *str)
 	char *tmp = NULL;
 	char *token = NULL;
 	int index = 0;
-
+	
 	if (!str)
 	{
-		free(str);
 		return (NULL);
 	}
 	tmp = _strdup(str);
@@ -59,19 +57,24 @@ char **tokenizer(char *str)
 	if (!token)
 	{
 		free(tmp);
-		free(str);
 		free(token);
 		return (NULL);
 	}
+	while (token)
+	{
+		index++;
+		token = strtok(NULL, " \n\t");
+	}
+	free(tmp);
 	list_str = malloc(sizeof(char *) * (index + 1));
 	if (!list_str)
 	{
 		free(list_str);
-		free(str);
-		free(tmp);
 		free(token);
 		return (NULL);
 	}
+	index = 0;
+	token = strtok(str, " \n\t");
 	while (token)
 	{
 		list_str[index] = _strdup(token);

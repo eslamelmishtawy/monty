@@ -31,6 +31,7 @@ int main(int argc, char **argv)
 	line = malloc(sizeof(char) * buff_size);
 	if (!line)
 	{
+		free(line);
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
@@ -49,6 +50,7 @@ int main(int argc, char **argv)
 		func(&stack, line_number);
 		line_number++;
 	}
+	free(line);
 	free_list(parsed_line);
 	free_stack(stack);
 	fclose(fd);

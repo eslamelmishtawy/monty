@@ -8,19 +8,12 @@
 void _push(stack_t **stack, unsigned int line_num)
 {
 	stack_t *s = *stack;
-
-	if (!stack)
-	{
-		free_stack(*stack);
-		free_stack(s);
-		fprintf(stderr, "L%d: usage: push integer", line_num);
-		exit(EXIT_FAILURE);
-	}
+	(void) line_num;
 
 	s = malloc(sizeof(stack_t));
 	if (!s)
 	{
-		free_stack(s);
+		free(s);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}

@@ -45,6 +45,9 @@ int main(int argc, char **argv)
 		func(&stack, line_number);
 		line_number++;
 	}
+	free_list(parsed_line);
+	free_stack(stack);
+	fclose(fd);
 	return (0);
 
 }

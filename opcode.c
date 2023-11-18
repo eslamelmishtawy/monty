@@ -11,13 +11,19 @@ void _push(stack_t **stack, unsigned int line_num)
 
 	if (!stack)
 	{
+		free_stack(*stack);
+		free_stack(s);
 		fprintf(stderr, "L%d: usage: push integer", line_num);
 		exit(EXIT_FAILURE);
 	}
 
 	s = malloc(sizeof(stack_t));
 	if (!s)
+	{
+		free_stack(s);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
+	}
 	s->n = data;
 	s->next = NULL;
 	s->prev = *stack;

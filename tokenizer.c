@@ -14,14 +14,20 @@ char *_strdup(char *str)
 	int i, len = 0;
 
 	if (str == NULL)
+	{
+		free(str);
 		return (NULL);
+	}
 
 	while (str[len] != '\0')
 		len++;
 
 	copy = (char *)malloc((sizeof(char) * len) + 1);
 	if (copy == NULL)
+	{
+		free(copy);
 		return (NULL);
+	}
 
 	for (i = 0; i < len; i++)
 		copy[i] = str[i];
@@ -43,7 +49,10 @@ char **tokenizer(char *str)
 	int index = 0;
 
 	if (!str)
+	{
+		free(str);
 		return (NULL);
+	}
 	tmp = _strdup(str);
 	token = strtok(tmp, " \t\n");
 
@@ -51,6 +60,7 @@ char **tokenizer(char *str)
 	{
 		free(tmp);
 		free(str);
+		free(token);
 		return (NULL);
 	}
 	list_str = malloc(sizeof(char *) * (index + 1));
@@ -58,6 +68,8 @@ char **tokenizer(char *str)
 	{
 		free(list_str);
 		free(str);
+		free(tmp);
+		free(token);
 		return (NULL);
 	}
 	while (token)

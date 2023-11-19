@@ -83,7 +83,7 @@ void _swap(stack_t **stack, unsigned int line_num)
 	int tmp = (*stack)->n;
 	int i = 0;
 	stack_t *temp = NULL;
-
+	
 	temp = *stack;
 
 	for (; temp != NULL; temp = temp->prev, i++)
@@ -108,8 +108,9 @@ void _add(stack_t **stack, unsigned int line_num)
 {
         int tmp = (*stack)->n;
         int i = 0;
-        stack_t *temp = *stack;
+        stack_t *temp = NULL;
 
+	temp = *stack;
         for (; temp != NULL; temp= temp->prev, i++)
                 ;
         if (i < 2)
@@ -123,4 +124,14 @@ void _add(stack_t **stack, unsigned int line_num)
 	*stack= (*stack)->prev;
 	(*stack)->n += tmp;
 	free(temp);
+}
+/**
+ * _nop - Print stack
+ * @stack: pointer to head of stack
+ * @line_num: line num
+ */
+void _nop(stack_t **stack, unsigned int line_num)
+{
+	(void) stack;
+	(void) line_num;
 }

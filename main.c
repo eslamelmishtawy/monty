@@ -43,10 +43,10 @@ int main(int argc, char **argv)
 		if (parsed_line[1] != NULL)
 			data = atoi(parsed_line[1]);
 		func(&stack, line_number);
+		free_list(parsed_line);
 		line_number++;
 	}
 	free(line);
-	free_list(parsed_line);
 	free_stack(stack);
 	fclose(fd);
 	return (0);

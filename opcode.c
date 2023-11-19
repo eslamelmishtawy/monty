@@ -32,6 +32,7 @@ void _pall(stack_t **stack, unsigned int line_num)
 {
 	(void) line_num;
 	stack_t *tmp = *stack;
+
 	while (tmp)
 	{
 		printf("%d\n", tmp->n);

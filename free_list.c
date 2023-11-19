@@ -14,7 +14,7 @@ void free_stack(stack_t *head)
 	while (head != NULL)
 	{
 		node = head;
-		head = head->next;
+		head = head->prev;
 		free(node);
 	}
 }
@@ -33,4 +33,5 @@ void free_list(char *a[])
 		free(a[i]);
 		i++;
 	}
+	free(a);
 }

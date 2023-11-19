@@ -37,3 +37,20 @@ void _pall(stack_t **stack, unsigned int line_num)
 		*stack = (*stack)->prev;
 	}
 }
+
+/**
+ * _pint - Print stack
+ * @stack: pointer to head of stack
+ * @line_num: line num
+ */
+void _pall(stack_t **stack, unsigned int line_num)
+{
+	if (*stack == NULL)
+	{
+		free_stack(*stack);
+		printf("L%d: can't pint, stack empty", line_num);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", (*stack)->n);
+	*stack = (*stack)->prev;
+}

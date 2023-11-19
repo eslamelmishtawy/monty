@@ -86,7 +86,7 @@ void _swap(stack_t **stack, unsigned int line_num)
 
 	temp = *stack;
 
-	for (; temp != NULL; temp= temp->next, i++)
+	for (; temp != NULL; temp = temp->prev, i++)
 		;
         if (i < 2)
         {
@@ -109,7 +109,7 @@ void _add(stack_t **stack, unsigned int line_num)
         int i = 0;
         stack_t *temp = *stack;
 
-        for (; temp != NULL; temp= temp->next, i++)
+        for (; temp != NULL; temp= temp->prev, i++)
                 ;
         if (i < 2)
         {

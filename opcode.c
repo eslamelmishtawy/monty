@@ -91,7 +91,8 @@ void _swap(stack_t **stack, unsigned int line_num)
         if (i < 2)
         {
                 free_stack(*stack);
-                fprintf(stderr, "L%d: can't swap, stack too short\n", line_num);
+                free_stack(temp);
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_num);
                 exit(EXIT_FAILURE);
         }
 	(*stack)->n = ((*stack)->prev)->n;
@@ -113,6 +114,7 @@ void _add(stack_t **stack, unsigned int line_num)
                 ;
         if (i < 2)
         {
+		free_stack(temp);
                 free_stack(*stack);
                 fprintf(stderr, "L%d: can't add, stack too short\n", line_num);
                 exit(EXIT_FAILURE);

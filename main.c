@@ -43,7 +43,10 @@ int main(int argc, char **argv)
 		if (!func)
 		{
 			free_stack(stack);
+			free(line);
+			fclose(fd);
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, parsed_line[0]);
+			free_list(parsed_line);
 			exit(EXIT_FAILURE);
 		}
 		if (parsed_line[1] != NULL)

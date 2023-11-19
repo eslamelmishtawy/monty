@@ -33,4 +33,5 @@ void free_list(char *a[])
 		free(a[i]);
 		i++;
 	}
+	free(a);
 }

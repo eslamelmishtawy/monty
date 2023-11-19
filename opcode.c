@@ -96,3 +96,27 @@ void _swap(stack_t **stack, unsigned int line_num)
 	((*stack)->prev)->n = tmp;
 
 }
+/**
+ * _add - Print stack
+ * @stack: pointer to head of stack
+ * @line_num: line num
+ */
+void _swap(stack_t **stack, unsigned int line_num)
+{
+        int tmp = (*stack)->n;
+        int i = 0;
+        stack_t *temp = *stack;
+
+        for (; temp != NULL; temp= temp->next, i++)
+                ;
+        if (i < 2)
+        {
+                free_stack(*stack);
+                fprintf(stderr, "L%d: can't add, stack too short\n", line_num);
+                exit(EXIT_FAILURE);
+        }
+	temp = *stack;
+	*stack= (*stack)->prev;
+	(*stack)->n += tmp;
+	free(temp);
+}

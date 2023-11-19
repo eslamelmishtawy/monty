@@ -45,7 +45,7 @@ void _pall(stack_t **stack, unsigned int line_num)
  * @stack: pointer to head of stack
  * @line_num: line num
  */
-void _pall(stack_t **stack, unsigned int line_num)
+void _pint(stack_t **stack, unsigned int line_num)
 {
 	if (*stack == NULL)
 	{

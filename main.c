@@ -72,6 +72,7 @@ void (*check_opcodes(char *op))(stack_t **stack, unsigned int line_number)
 	instruction_t instruct[] = {
 		{"push", _push},
 		{"pall", _pall},
+		{"pint", _pint},
 		{NULL, NULL}
 	};
 	int i = 0;

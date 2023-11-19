@@ -47,5 +47,6 @@ char **tokenizer(char *str);
 void (*check_opcodes(char *op))(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t *head);
 void free_list(char *a[]);
+void _pint(stack_t **stack, unsigned int line_num);
 
 #endif

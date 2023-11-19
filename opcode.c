@@ -50,9 +50,8 @@ void _pint(stack_t **stack, unsigned int line_num)
 	if (*stack == NULL)
 	{
 		free_stack(*stack);
-		printf("L%d: can't pint, stack empty", line_num);
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_num);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*stack)->n);
-	*stack = (*stack)->prev;
 }

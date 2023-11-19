@@ -40,6 +40,12 @@ int main(int argc, char **argv)
 	{
 		parsed_line = tokenizer(line);
 		func = check_opcodes(parsed_line[0]);
+		if (!func)
+		{
+			free_stack(stack);
+			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, parsed_line[0]);
+			exit(EXIT_FAILURE);
+		}
 		if (parsed_line[1] != NULL)
 			data = atoi(parsed_line[1]);
 		func(&stack, line_number);
